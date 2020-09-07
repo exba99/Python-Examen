@@ -1,0 +1,31 @@
+Pour rendre opérationnel le skeleton, voici les étapes à suivre:
+
+1. Téléchargez le fichier zippé du projet
+
+2. Dézipper le fichier et se déplacer dans le répertoire
+
+3. Réinstaller l'environnement virtuel
+    * Supprimer le dossier venv
+    * Créer un nouvel environment vuirtuel: python -m venv venv
+    * Activation de l'environnement virtuel
+        - Linux/ Mac : source venv/bin/activate
+        - Windows : .\venv\Scripts\activate.bat
+
+4. Installer les prerequis : pip install -r requirements.txt
+
+5. Positionner la varibale d'environnement FLASK_CONFIG:
+    * Environnement de développement : 
+        - Windows : set FLASK_CONFIG = "development"
+        - Linux : export FLASK_CONFIG = "development"
+    * Environnement de production : 
+        - Windows : set FLASK_CONFIG = "production"
+        - Linux : export FLASK_CONFIG = "production"
+
+6. Créer les bases de données (MySQL dans notre cas) pour l'environnement de développement et celui de production
+
+7. Modifier le fichier config.py pour ajuster les chaines de connexions vers vos bases de données
+
+8. Démarrer le projet en mettant :    python foncier.py
+
+
+Enjoy !!!!!!!!!

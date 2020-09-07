@@ -1,0 +1,70 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title text-center">Terrain</h4>
+                </div>
+                <div class="card-body">
+                    <form  method="post">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            <label for="numero" class="bmd-label-floating">{{ form.numero.label }}</label>
+                            {{ form.numero(class_="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="longueur" class="bmd-label-floating">{{ form.longueur.label }}</label>
+                            {{ form.longueur(class_="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="largeur" class="bmd-label-floating">{{ form.largeur.label }}</label>
+                            {{ form.largeur(class_="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Secteur</label>
+                            <select class="form-control"  id="exampleFormControlSelect1" name="secteur">
+                                <option>--Choisir--</option>
+                                {% for option in form.secteur %}
+                                    {{ option }}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {{ form.submit(class_="btn btn-primary pull-right")}}
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title text-center">Terrains</h4>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Numero</th>
+                                <th>Superficie</th>
+                                <th>Secteur</th>
+                                <th>Region</th>
+                            </tr>
+                            {% for terrain in array %}
+                                <tr>
+                                    <td>{{ terrain.numero }}</td>
+                                    <td>{{ terrain.longueur * terrain.largeur }}</td>
+    
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4" class="text-center">Aucun terrain enregistré</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

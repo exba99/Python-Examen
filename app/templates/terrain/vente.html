@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Start Service Content -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="mu-service-content">
+            <div class="row">
+                {% for terrain in terrains %}
+                        <!-- Start single service -->
+                        <div class="col-md-4">
+                            <div class="mu-single-service">
+                                <div class="mu-single-service-icon"><i class="fa fa-map-pin" aria-hidden="true"></i></div>
+                                <div class="mu-single-service-content">
+                                    <h3>{{ terrain.numero }}</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor commodo .</p>
+                                    <a href="/detail/{{terrain.id}}" class="btn btn-primary">Détail</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End single service -->
+                {% endfor %}  
+            </div>                        
+        </div>                        
+    </div>                        
+</div>                        
+{% endblock %}

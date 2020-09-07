@@ -1,0 +1,134 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+<p class="h3 text-center">Listes des demandes de titre foncier</p>
+<div class="x_content">
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="card-box table-responsive">
+  <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>
+        <th>Numero</th>
+        <th>Date</th>
+        <th>Type de demande</th>
+        <th>Numero du Terrain</th>
+        <th>Nom et prenom demandeur</th>
+        <th hidden="hidden">x</th>
+        <th hidden="hidden">x</th>
+        <th hidden="hidden">x</th>
+        <th hidden="hidden">x</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+
+    <tbody>
+        {% for d in array %}
+            <tr>
+                <td> {{d.Demande.numero}} </td>
+                <td> {{d.Demande.date}} </td>
+                <td> {{d.TypeDemande.libelle}} </td>
+                <td> {{d.Terrain.numero}} </td>
+                <td> {{d.Proprietaire.nom}} {{d.Proprietaire.prenom}}</td>
+                <td hidden="hidden">{{d.Demande.plan}}</td>
+                <td hidden="hidden">{{d.Demande.acte}}</td>
+                <td hidden="hidden"> {{d.Terrain.longueur}} x {{d.Terrain.largeur}}</td>
+                <td hidden="hidden"> {{d.Region.nom}}, {{d.Departement.nom}}, {{d.Arrondissement.nom}}, {{d.Secteur.numero}}</td>
+                <td><button class="btn btn-link" type="button" data-toggle="modal" data-target="#DetailModal" idDemande="{{ d.Demande.id }}">Details</button></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Pop up Detail -->
+<div class="modal fade bd-example-modal-xl" id="DetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail de la demande</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Numero Demande
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" id="numeroDemande" name="numero" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Type Demande
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" id="typeDemande" name="typeDemande" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Date
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" id="date" name="solde" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Numero du Terrain
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" id="numeroTerrain" name="numAgence" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Localisation du Terrain
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" id="localisation" name="numAgence" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Dimension du terrain
+                    </label>
+                    <div class="col-md-9 col-sm-9  ">
+                        <input type="text" id="dimensionTerrain" name="numAgence" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Nom & Prénom du demandeur
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" id="demandeur" name="demandeur" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Acte de vente
+                    </label>
+                    <div class="col-md-9 col-sm-9  ">
+                        <button id="acte" url="">Visualiser l'acte</button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Plan du terrain
+                    </label>
+                    <div class="col-md-9 col-sm-9  ">
+                        <button id="plan" url="">Visualiser le plan</button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="rejeter">Rejetter la demande</button>
+                <button type="button" class="btn btn-primary" id="accepter">Accepter la demande</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

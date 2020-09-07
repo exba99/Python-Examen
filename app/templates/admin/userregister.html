@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block title %}
+    Authentification utilisateur
+{% endblock %}
+
+{% block content %}
+    <br><br><br><br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header text-center text-white bg-primary">
+                    Register
+                </div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label for="cin">{{ form.cin.label }}</label>
+                                            {{ form.cin(class_="form-control") }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label for="nom">{{ form.nom.label }}</label>
+                                            {{ form.nom(class_="form-control") }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label for="prenom">{{ form.prenom.label }}</label>
+                                            {{ form.prenom(class_="form-control") }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label for="email">{{ form.email.label }}</label>
+                                            {{ form.email(class_="form-control") }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label for="password">{{ form.password.label }}</label>
+                                            {{ form.password(class_="form-control") }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label for="profil">{{ form.profil.label }}</label>
+                                            <select class="form-control" name="profil">
+                                                <option>--Choisir--</option>
+                                                {% for option in form.profil %}
+                                                    {{ option }}
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label for="adresse">{{ form.adresse.label }}</label>
+                                    {{ form.adresse(class_="form-control") }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">{{form.submit(class_="btn btn-primary btn-block")}}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <a href="/login" class="btn btn-outline-primary btn-block">Se connecter</a>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}
